@@ -7,13 +7,18 @@ using System.Threading.Tasks;
 
 namespace Order.Domain
 {
+    [Serializable]
     public class OrderCreated : DomainEvent<Guid>
     {
         public OrderInfo Info { get; private set; }
+        public IList<House> Houses { get; private set; }
 
-        public OrderCreated(OrderInfo info)
+        public OrderCreated() { }
+
+        public OrderCreated(OrderInfo info, IList<House> houses)
         {
             this.Info = info;
+            this.Houses = houses;
         }
     }
 }
